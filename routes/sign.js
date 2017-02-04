@@ -14,6 +14,9 @@ var pool = mysql.createPool({
 });
 
 // 일반 로그인
+router.get('/up', function(req, res, next){
+  res.render('sign_up');
+});
 router.post('/in', function(req, res, next) {
   pool.getConnection(function(error, connection){
     if (error){

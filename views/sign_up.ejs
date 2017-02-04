@@ -1,0 +1,249 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--jQuery-->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!--bootstrap-->
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!--CSS-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <!--Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/sign_up.css">
+</head>
+
+<body>
+    <!--Header-->
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><span>Brand</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--회원가입 페이지-->
+
+
+    <!--heading-->
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 header">
+                    <h4>
+              <b>회원가입</b>
+            </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Form-->
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-horizontal sign-form" role="form" action="/member" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="name" class="control-label">
+                                    <i class="fa fa-circle fa-fw fa-lg"></i>이름
+                                    <span class="font-red">*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control inline" id="name" name="name">
+                                <span class="color-red">
+                    <b>* 필수정보 입니다.</b>
+                  </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="email" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>이메일 주소
+                                    <span class="font-red">*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="email" name="email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="password" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>비밀번호
+                                    <span class="font-red">*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control input-row" id="password" name="password">
+                                <input type="password" class="form-control input-row" id="confirm_password" name="confirm_password">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="gender" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>성별
+                                    <span class="font-red">*</span>
+                                </label>
+                            </div>
+                            <div class="col-sm-10">
+                                <label class="radio-inline radio">
+                                    <input type="radio" name="gender" id="gender" value="option1" class="">남성</label>
+                                <label class="radio-inline radio">
+                                    <input type="radio" name="gender" id="gender" value="option2">여성</label>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-sm-2">
+                                <label for="profile" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>프로필사진</label>
+                            </div>
+                            <div class="col-sm-10 filebox">
+                                <input class="upload-name" value="파일선택" disabled="disabled">
+                                <label for="profile">파일 업로드</label>
+                                <input type="file" id="profile" name="profile" class="upload-hidden">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="languages" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>구사언어</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="languages" name="languages">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="country" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>거주국가</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <select class="form-control" id="country" name="country">
+                                    <option>대한민국</option>
+                                    <option>일본</option>
+                                    <option>중국</option>
+                                    <option>미국</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="memo" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>자기소개</label>
+                            </div>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" id="meme" name="memo" rows="5"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group ">
+                            <div class="col-sm-2">
+                                <label for="certificate" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>자격증등록</label>
+                            </div>
+                            <div class="col-sm-10 filebox">
+                                <input class="upload-name" value="파일선택" disabled="disabled">
+                                <label for="certificate">파일 업로드</label>
+                                <input type="file" id="certificate" name="certificate" class="upload-hidden">
+                            </div>
+                            <div class="col-sm-8">
+                              <span class="color-red">
+                                <b>* 가이드가 되어 여행계획을 판매를 하기 위해서는 자격증 인증 절차를 거쳐야합니다.<br>인증절차는 최대 2일 소요 될 수 있습니다.</b>
+                              </span>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        <div class="form-group">
+                            <div class="col-sm-2">
+                                <label for="inputAgree" class="control-label"><i class="fa fa-circle fa-fw fa-lg"></i>약관동의<span class="font-red"> *</span></label>
+                            </div>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value=""> 서비스 이용 약관(필수)
+                                    </label>
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" value=""> 개인정보 보호 정책(필수)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <br>
+                        <br>
+
+                        <!---->
+                        <div class="form-group">
+                            <div class="col-sm-offset-4 col-sm-10">
+                                <button type="submit" class="btn gray-button">회원 가입</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--row-->
+        </div>
+        <!--container-->
+    </div>
+    <!--form section-->
+
+
+    <!--Footer-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript">
+        //input file 처리
+        $(document).ready(function() {
+            var fileTarget = $('.filebox .upload-hidden');
+            fileTarget.on('change', function() { // 값이 변경되면
+                if (window.FileReader) { // modern browser
+                    var filename = $(this)[0].files[0].name;
+                } else { // old IE
+                    var filename = $(this).val().split('/').pop().split('\\').pop(); // 파일명만 추출
+                } // 추출한 파일명 삽입
+                $(this).siblings('.upload-name').val(filename);
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>

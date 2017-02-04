@@ -60,7 +60,7 @@ router.post('/', upload.fields([{ name: 'certificate', maxCount: 1 }, { name: 'p
               res.sendStatus(500);
             }
             else {
-                res.sendStatus(200);
+              res.status(200).send('<script>alert("회원가입 완료");location.replace("/");</script>');
             }
           });
         }

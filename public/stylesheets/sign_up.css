@@ -1,0 +1,124 @@
+body{
+	color: #5D5D5D;
+}
+
+
+.header {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #5D5D5D;
+    ;
+}
+.sign-form {
+    padding-right: 70px;
+    padding-left: 70px;
+}
+
+.inline{
+	display: inline-block;
+}
+.sign-form input {
+    border-radius: 5px;
+    border: 1px solid #5D5D5D;
+
+    margin-right: 25px;
+
+}
+.sign-form input[type=text] {
+    width: 40%;
+}
+
+.sign-form input[type=password] {
+    width: 40%;
+}
+
+.sign-form input[type=file] {
+    border: none;
+}
+.sign-form select {
+    width: 40%;
+    border: 1px solid #5D5D5D;
+    margin-right: 25px;
+}
+.sign-form textarea {
+    width: 60%;
+    border: 1px solid #5D5D5D;
+}
+.font-red {
+    color: red;
+    font-size: 20px;
+}
+.color-red{
+	color: red;
+	float: right;
+}
+.input-row {
+    float: left;
+    display: block;
+    margin-right: 10px;
+}
+.gray-button {
+    background-color: #5D5D5D;
+    color: white;
+    width: 40%;
+}
+.gray-button:hover {
+    color: white;
+}
+
+
+.filebox label {
+    display: inline-block;
+    padding: .6em .75em;
+    color: white;
+    font-size: inherit;
+
+    text-align: center;
+    background-color: #5D5D5D;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 40%;
+}
+.filebox input[type="file"] {
+    /* 파일 필드 숨기기 */
+
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+.filebox .upload-name {
+    display: inline-block;
+    padding: .6em .75em;;
+    /* label의 패딩값과 일치 */
+    width: 40%;
+
+    font-family: inherit;
+    line-height: normal;
+
+    border: 1px solid #5D5D5D;
+   background-color: white;
+    border-radius: 5px;
+    -webkit-appearance: none;
+    /* 네이티브 외형 감추기 */
+
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.center-block{
+ display: block;
+	margin : 0 auto;
+}
+
+.fa-lg {
+    font-size: 0.1em;
+    line-height: .75em;
+    vertical-align: 10%;
+    color: #5D5D5D;
+    margin-right:25px;
+}

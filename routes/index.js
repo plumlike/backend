@@ -14,15 +14,7 @@ var pool = mysql.createPool({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  pool.getConnection(function(error, connection){
-    if (error){
-      console.log("getConnection Error" + error);
-      res.sendStatus(500);
-    }
-    else {
-      res.render('index', { title: 'Express' });
-    }
-  });
+  res.render('index', { title: 'Express' });
 });
 
 module.exports = router;
