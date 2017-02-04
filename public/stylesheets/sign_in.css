@@ -1,0 +1,101 @@
+body{
+    background: url(/images/main_1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: white;
+}
+      #header{
+      	margin-top : 0px;
+        padding-top : 0px;
+
+      }
+      li{
+         font-size : 18px;
+        }
+        .section{
+        font-family :"나눔고딕"; //임시방편..
+        }
+        #box{
+          width : 30%;
+          padding : 20px;
+          z-index:1;
+          -webkit-border-radius:20px;
+        }
+      #box:after{
+        background-image:url(D:\grey.png);
+        opacity :0.5;
+        z-index:-1;
+        background-size:100%;
+        padding : 20px;
+      	position: absolute;
+        top:0;
+        left:0;
+      }
+
+        input[type="text"]{
+          border : 2.5px;
+          border-style :solid;
+          border-color : white;
+          color:white;
+          background-color:transparent;
+          -webkit-border-radius:10px;
+          padding-bottom : 100px;
+          padding: 7px;
+          width : 100%;
+        }
+        input[type="checkbox"]{
+              padding-top : 10px;
+               height 	: 1em;
+           	  width     : 2em;
+            -ms-transform: scale(2);
+              -moz-transform: scale(7);
+              -webkit-transform: scale(2);
+              -o-transform: scale(8);
+        }
+        #findPass{
+          text-align : right;
+          font-size : 16px;
+        }
+        .loginBox {
+          padding-bottom : 120px;
+          font-size : 25px;
+        }
+
+        #clickLogin {
+          margin-top : 20px;
+          font-size : 15px;
+          background-color : #009DC1;
+          -webkit-border-radius:10px;
+          height : 4.5%;
+          width : 100%;
+          color : white;
+        }
+        #clickNaver{
+          -webkit-border-radius:10px;
+           height : 4.5%;
+          width : 100%;
+        }
+        #clickJoin{
+          font-size : 15px;
+          border-style : solid;
+          border-color : white;
+          background-color  : transparent;
+          -webkit-border-radius:10px;
+          height :4.5%;
+          width : 100%;
+          color : white;
+        }

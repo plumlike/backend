@@ -24,6 +24,7 @@ var api_url = "";
 // 네이버 로그인
 router.get('/naver', function(req, res) {
     api_url = 'https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=' + client_id + '&redirect_uri=' + redirectURI + '&state=' + state;
+    console.log(api_url);
     res.writeHead(200, {
         'Content-Type': 'text/html;charset=utf-8'
     });
@@ -84,7 +85,7 @@ router.get('/naver/callback', function(req, res) {
                       else {
                         if (rows.length > 0){
                           if (rows[0].naver_id){
-                            req.session.user_id = rows.insertId;
+                            req.session.user_id = rows[0].id;
                             req.session.name = body.response.name;
                             callback(null, 'resultC');
                             connection.release();
@@ -96,7 +97,7 @@ router.get('/naver/callback', function(req, res) {
                                 connection.release();
                               }
                               else {
-                                  req.session.user_id = rows.insertId;
+                                  req.session.user_id = rows[0].id;
                                   req.session.name = body.response.name;
                                   callback(null, 'resultC');
                                   connection.release();
@@ -111,8 +112,9 @@ router.get('/naver/callback', function(req, res) {
                               connection.release();
                             }
                             else {
-                              req.session.user_id = rows.insertId;
+                              req.session.user_id = rows[0].insertId;
                               req.session.name = body.response.name;
+
                               callback(null, 'resultC');
                               connection.release();
                             }
@@ -131,6 +133,7 @@ router.get('/naver/callback', function(req, res) {
           }
           else {
             var msg = req.session.user_id + "번 회원 " + req.session.name + "님 로그인";
+            console.log(msg);
             res.render('index', { title: 'Express' });
           }
         }

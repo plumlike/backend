@@ -1,0 +1,344 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--jQuery-->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!--bootstrap-->
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+<script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=EHpo3R3lnuULINBK0AU9&submodules=geocoder"></script>
+    <!--NAVER Map API-->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=EHpo3R3lnuULINBK0AU9"></script>
+
+    <!--CSS-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <!--CustomCSS-->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/inform_edit.css">
+</head>
+
+<body>
+    <!--Header-->
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button><a class="navbar-brand" href="#"><span>Brand</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a>
+                    </li>
+                    <li><a href="#">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--inform_edit page-->
+
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <form role="form" method="post" action="/plan" enctype="multipart/form-data">
+
+                        <div class="row">
+
+                            <div class="col-sm-8">
+
+                                <div class="form-group">
+                                    <label class="control-label label-size" for="post">게시글 작성</label>
+                                    <div class="post-div">
+                                        <input type="text" class="border-none post-title" name="title" placeholder="제목을 입력해주세요" style="width:95%; height:40px;">
+                                        <textarea class="border-none" rows="11" name="contents" style="width:95%; overflow:hidden" placeholder="본문을 입력해주세요" wrap="off"></textarea>
+                                    </div>
+
+
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label label-size">기간</label>
+                                    <div class="date-div">
+                                        <input type="text" name="date"/>
+
+                                        <input type="button" class="date-button" name="" value="달력에서 날짜선택">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label label-size">지역 / 카테고리 설정</label>
+                                    <div class="category-div">
+                                        <span>지도에서 위치를 지정하면 자동으로 입력됩니다.</span>
+
+                                        <select class="form-control map_category" name="category">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--col-sm-8-->
+
+
+                            <div class="col-sm-4">
+
+                                <div class="form-group">
+                                    <label class="control-label label-photo-size" for="photo">사진등록</label>
+                                    <br/>
+                                    <span class="font-red">*1장 이상 등록하셔야 합니다.</span>
+
+                                    <div class="filebox">
+                                        <label for="InputFile1" class="fileTop">+</label>
+                                        <input type="file" id="InputFile1" name="image1" class="upload-hidden" accept="image/*">
+
+                                        <label for="InputFile2" class="fileDown">+</label>
+                                        <input type="file" id="InputFile2" name="image2"  class="upload-hidden" accept="image/*">
+
+                                        <label for="InputFile3" class="fileDown">+</label>
+                                        <input type="file" id="InputFile3" name="image3"  class="upload-hidden" accept="image/*">
+
+                                        <label for="InputFile4" class="fileDown">+</label>
+                                        <input type="file" id="InputFile4" name="image4"  class="upload-hidden" accept="image/*">
+
+
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group cost-div">
+                                    <label class="control-label label-photo-size" for="cost">가격입력</label>
+                                    <br/>
+                                    <input class="form-control" type="number" rows="3" id="cost" name="fee"></textarea>
+                                </div>
+
+                            </div>
+                            <!--col-sm-4-->
+
+                        </div>
+                        <!--row-->
+
+
+                        <!--down edit-->
+
+                        <div class="map-div">
+                            <div id="map" style="width:100%;height:600px;"></div>
+                            <p class="font-map-red">* 지도를 클릭하여 원하는 위치에 pin을 생성하고, 하단에 위치정보를 추가하신 뒤 등록을 눌러주세요. (최대 5개 pin 생성 가능)</p>
+
+                        </div>
+
+
+                        <ul id="map-list-div">
+                        	<!--li부분 계속 추가-->
+                            <li class="map-list row">
+                                <div class="col-md-2">
+                                    <img src="/images/pin/pin_upsize_1.png" width="30" height="45" class="map-icon">
+                                </div>
+
+
+                                <div class="col-md-8 map-list-input">
+                                    <input type="text" name="area" placeholder="장소 이름" class="map-list-input-name">
+                                    <br/>
+                                    <input type="text" name="description" value="" placeholder="장소 설명을 적어주세요.">
+
+                                </div>
+
+                                <div class=" map-list-btn">
+                                    <button type="button" id="" class="btn btn-success marker_add_btn">등록</button>
+                                    <button type="button" class="btn btn-danger">삭제</button>
+                            </li>
+                            <!---->
+                        </ul>
+
+
+
+                        <div class="submit-div">
+                            <button type="submit" class="btn btn-default submit-btn">여행 계획 등록하기</button>
+
+                        </div>
+
+
+
+                    </form>
+                    <!--form-role-->
+
+                    </div>
+                    <!--col-md-12-->
+
+                </div>
+                <!--row-->
+            </div>
+            <!--container-->
+        </div>
+        <!--section-->
+
+        <script type="text/javascript">
+            function readURL(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#UploadedImg').attr('src', e.target.result);
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $(function() {
+                $('input[name="date"]').daterangepicker({
+                    locale: {
+                        format: 'YYYY-MM-DD'
+                    }
+                });
+            });
+
+
+            var HOME_PATH = window.HOME_PATH || '.';
+
+            //map Option config
+            var mapOption = {
+
+                zoom: 9,
+                //map controll
+                scaleControl: false,
+                logoControl: false,
+                mapDataControl: false,
+                zoomControl: true,
+                minZoom: 1
+                    //
+            };
+
+            //map
+            var map = new naver.maps.Map('map', mapOption);
+
+            var markerArray = new Array();
+            var marker;
+            var add = true;
+
+            //polyline
+            var polyline = new naver.maps.Polyline({
+                map: map,
+                path: [],
+                strokeColor: '#00C73C',
+                strokeWeight: 2
+            });
+
+
+
+            //marker add
+            var markerAdd = naver.maps.Event.addListener(map, 'click', function(e) {
+                var pinNumber = markerArray.length + 1;
+                if (add) {
+
+                    //custom marker
+                    var icon = {
+                        url: '/images/pin/pin_' + pinNumber + '.png'
+                    }
+
+                    //new marker
+                    marker = new naver.maps.Marker({
+                        position: e.coord,
+                        map: map,
+                        icon: icon
+                    });
+                    add = false;
+
+                }
+                //marker move
+                else {
+                    marker.setPosition(e.coord);
+                }
+
+            });
+
+            //path add
+            $(document).on('click', '.marker_add_btn', function() {
+                markerArray.push(marker);
+
+                var path = polyline.getPath();
+                path.push(marker.getPosition());
+                console.log(marker.getPosition());
+                add = true;
+                var pinNumber = markerArray.length + 1;
+
+                var longitude = marker.getPosition()._lng;
+                var latitude = marker.getPosition()._lat;
+                naver.maps.Service.reverseGeocode({
+                    location: new naver.maps.LatLng(latitude, longitude),
+                }, function(status, response) {
+                    if (status !== naver.maps.Service.Status.OK) {
+                        return alert('Something wrong!');
+                    }
+                    else {
+                      console.log(response.result.items[0].addrdetail);
+                        console.log(response.result.items[0].addrdetail.sido);
+                      var sido = response.result.items[0].addrdetail.sido;
+                      var sigugun = response.result.items[0].addrdetail.sigugun;
+                      if (markerArray.length >= 5) {
+                          $('#marker_add_btn').css('visibility', 'hidden');
+                          naver.maps.Event.removeListener(markerAdd);
+                          add = false;
+                      } else {
+
+                          $('#map-list-div').append('<li class="map-list row">' +
+                              '<div class="col-md-2">' +
+                              '<img src="/images/pin/pin_upsize_' + pinNumber + '.png" width="30" height="45" class="map-icon">' +
+                              '</div>' +
+
+
+                              '<div class="col-md-8 map-list-input">' +
+                              '<input type="text" name="area" placeholder="장소 이름" class="map-list-input-name">' +
+                              '<br/>' +
+                              '<input type="text" name="description" placeholder="장소 설명을 적어주세요." >' +
+                              '<input type="hidden" name="longitude" value=' + longitude + '>' +
+                              '<input type="hidden" name="latitude" value=' + latitude + '>' +
+                              '<input type="hidden" name="sido" value=' + sido + '>' +
+                              '<input type="hidden" name="sigugun" value=' + sigugun + '>' +
+
+                              '</div>' +
+
+                              '<div class=" map-list-btn">' +
+                              '<button type="button" class="btn btn-success marker_add_btn">등록</button>' +
+                              '<button type="button" class="btn btn-danger">삭제</button>' +
+                              '</li>');
+
+
+                      }
+
+                      $(this).css('visibility', 'hidden');
+                    }
+                    // do Something
+                });
+                //path full
+
+            });
+
+            $(document).on("keypress", 'input', function(e) {
+                var code = e.keyCode || e.which;
+                if (code == 13) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+        </script>
+
+</body>
+
+</html>

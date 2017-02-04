@@ -1,0 +1,175 @@
+.top-left{
+	border: 1px solid #5D5D5D;
+	border-radius: 10px;
+	padding: 45px;
+	padding-left: 4%;
+	margin-bottom: 15px;
+	margin-top:30px;
+
+	height: 600px;
+
+	margin-left: 30px;
+	margin-right: 20px;
+
+	background-color: #FFFFFF;
+
+}
+
+.top-section{
+	z-index: 2;
+}
+
+.top-right{
+	margin-top:30px;
+	font-weight:bolder;
+	margin-right: 20px;
+}
+
+.right{
+	float: right;
+}
+
+.user-info-detail{
+	width: 75%;
+	margin-top: 10px;
+	font-weight: bolder;
+}
+
+.user-info-detail-font{
+	margin-bottom: 10px;
+}
+
+.user-info-detail-font2{
+	margin-bottom: 7px;
+}
+
+.user-info{
+	padding-bottom: 20px;
+	border-bottom: 2px solid #5D5D5D;
+
+}
+
+.tour-info{
+	padding-top: 15px;
+	font-weight: bolder;
+	font-size: 15px;
+}
+
+.tour-detail h3{
+	padding: 15px 0px;
+	font-weight: bolder;
+}
+
+.main-photo{
+	/*background-color: #F2F2F2;*/
+	height: 210px;
+	text-align: center;
+	line-height: 200px;
+	width: 360px;
+
+}
+
+.add-photo{
+	background-color: #F2F2F2;
+	width: 110px;
+	height: 70px;
+	text-align: center;
+	margin-left: 15px;
+	margin-top: 20px;
+	line-height: 70px;
+}
+
+.map-absoulte{
+	position: absolute;
+  	top: -120px;
+ 	z-index: -1;
+}
+
+.map-list{
+	border: 1px solid #5D5D5D;
+	border-radius: 10px;
+
+	padding: 15px;
+
+	margin-top: 30px;
+	margin-left: 10px;
+}
+
+.map-list-input{
+	padding-top: 5px;
+}
+.map-icon{
+	margin: 0px 15px;
+}
+.map-list-btn{
+	margin-top: 8px;
+}
+.map-list-btn button{
+	margin-right: 5px;
+}
+
+
+.map-list-input-name{
+	font-weight: bold;
+}
+
+#map-list-div{
+	list-style: none;
+}
+
+label{
+	font-size: 20px;
+	font-weight: bolder;
+
+	padding-left: 60px;
+}
+
+.tour-person{
+	border: 1px solid #5D5D5D;
+	border-radius: 10px;
+
+
+	margin-top: 30px;
+	margin-left: 45px;
+	height: 96px;
+
+	padding-left:20px;
+	padding-top : 10px;
+
+}
+
+.tour-person p{
+	font-weight: bolder;
+	font-size: 18px;
+	color: #f0ad4e;
+}
+
+.tour-btn{
+	margin-top: 20px;
+	margin-left: 45px;
+	width: 88%;
+	text-align: center;
+}
+
+.tour-person-list{
+	margin-top: 65px;
+}
+
+.tour-person-detail{
+	border: 1px solid #5D5D5D;
+	border-radius: 10px;
+	text-align: center;
+	margin: 0px 10px;
+}
+
+.tour-person-list .row{
+	margin-left: 45px;
+}
+
+.tour-person-list label{
+	margin-bottom: 20px;
+}
+
+.tour-person-detail img{
+	margin: 6px 0px;
+}

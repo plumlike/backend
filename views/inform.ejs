@@ -1,0 +1,239 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!--jQuery-->
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+    <!--bootstrap-->
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+    <!--NAVER Map API-->
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=EHpo3R3lnuULINBK0AU9"></script>
+
+    <!--CSS-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+
+    <!--CustomCSS-->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/inform.css">
+</head>
+
+<body>
+    <!--Header-->
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button><a class="navbar-brand" href="#"><span>Brand</span></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">Home</a>
+                    </li>
+                    <li><a href="#">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!--inform_edit page-->
+
+
+    <div class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!--top section-->
+                    <div class="row top-section">
+                        <div class="col-md-12 center" >
+                            <div class="top-left">
+
+
+                                <div class="user-info">
+                                    <%if (datas.guide.profile){
+                                    var src = datas.guide.profile;
+                                    }
+                                    else {
+                                    var src = "/images/usericon.svg";
+                                    }
+                                    %>
+                                    <img src=<%= src %> width="100px" height="100px">
+
+                                    <div class="user-info-detail right">
+                                        <div class="user-info-detail-font">
+                                        <span> <%= datas.guide.name %> / <%= datas.guide.gender %></span>
+                                        <span class="right"><%= datas.guide.email %></span>
+                                        </div>
+                                        <p class="user-info-detail-font2"><%= datas.guide.languages %></p>
+                                        <p class="user-info-detail-font2"><%= datas.guide.memo %></p>
+                                    </div>
+                                </div>
+
+                                <div class="tour-info">
+                                    <span><%= datas.plan.start_at %> ~ <%= datas.plan.start_at %></span>
+                                    <span class="right"><%= datas.plan.sido %> <%= datas.plan.sigugun %> / <%= datas.plan.category %></span>
+                                </div>
+
+                                <div class="tour-detail">
+                                    <h3><%= datas.plan.title %></h3>
+
+                                    <p><%= datas.plan.contents %></p>
+                                    <br/>
+
+
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-5">
+
+                            <div class="top-right">
+                                <div class="main-photo"></div>
+                                <div class="row">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+
+                    <!--map-->
+
+                     <div id="map" class="map-absoulte" style="width:100%;height:600px;"></div>
+
+                     <!--down-section-->
+
+                     <div class="row">
+
+                        <div class="col-md-7">
+
+                             <label>장소 정보</label>
+
+                            <ul id="map-list-div">
+                            <!--li부분 계속 추가-->
+                            <% for (var i in datas.plan.routes) { %>
+                            <li class="map-list row">
+                                <div class="col-md-2">
+                                    <% var temp = Number(i)+1; var src = "/images/pin/pin_upsize_" + temp + ".png"; %>
+                                    <img src=<%=src%> width="40" height="60" class="map-icon">
+                                </div>
+                                <div class="col-md-8 map-list-input">
+                                    <p><b><%= datas.plan.routes[i].area %></b></p>
+                                    <p><%= datas.plan.routes[i].description %></p>
+                                </div>
+                            </li>
+                            <% } %>
+                        </ul>
+
+
+                        </div>
+
+                        <div class="col-md-4">
+                            <div>
+                                <label>이용요금</label>
+                            <div class="tour-person">
+                                <p>
+                                  <%= datas.plan.fee %>
+                                </p>
+                            </div>
+                            <% var action = '/plan/' + datas.plan.id; %>
+                            <form name="f1" method="post" action=<%=action%>>
+                              <button type="submit" class="btn btn-success tour-btn">여행 동참하기</button>
+                            </form>
+
+                            </div>
+
+                            <div class="tour-person-list">
+                                <label>참여자</label>
+
+                                <div class="row">
+                                    <% for(var i in datas.apply) {
+                                      if (datas.apply[i].profile){
+                                        var src = datas.apply[i].profile;
+                                        }
+                                        else {
+                                        var src = "/images/usericon.svg";
+                                        }
+                                        %>
+                                    <div class="tour-person-detail col-md-3">
+
+
+                                        <img src=<%=src%> width="50px" height="50px">
+                                        <p><%= datas.apply[i].name %></p>
+                                    </div>
+                                    <%}%>
+                                </div>
+
+
+
+                            </div>
+
+
+
+                        </div>
+
+
+
+                     </div>
+
+
+
+
+                </div>
+                <!--col-md-12-->
+            </div>
+            <!--row-->
+        </div>
+        <!--container-->
+    </div>
+    <!--section-->
+
+    <script type="text/javascript">
+         //map Option config
+        var mapOption = {
+
+            center: new naver.maps.LatLng(<%=datas.plan.routes[0].latitude%>, <%=datas.plan.routes[0].longitude%>),
+            zoom: 9,
+            //map controll
+            scaleControl: false,
+            logoControl: false,
+            mapDataControl: false,
+            zoomControl: true,
+            minZoom: 1
+            //
+        };
+
+        var icon = {
+            url: '/images/pin/pin_1.png'
+        };
+        //map
+        var map = new naver.maps.Map('map', mapOption);
+        var marker = new naver.maps.Marker({
+            position: mapOption.center,
+            map: map,
+            icon : icon
+        });
+    </script>
+
+</body>
+
+</html>

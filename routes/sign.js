@@ -13,7 +13,14 @@ var pool = mysql.createPool({
    connectionLimit : dbConfig.connectionLimit,
 });
 
+
+
 // 일반 로그인
+router.get('/in', function(req, res, next){
+  res.render('sign_in');
+});
+
+// 회원 가입
 router.get('/up', function(req, res, next){
   res.render('sign_up');
 });

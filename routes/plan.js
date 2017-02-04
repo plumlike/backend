@@ -6,6 +6,7 @@ var dbConfig = require('../config.json').dbConfig;
 var multer = require('multer');
 var async = require('async');
 var multerS3 = require('multer-s3');
+var moment = require('moment');
 var router = express.Router();
 
 aws.config.loadFromPath('./awsConfig.json');
@@ -33,6 +34,9 @@ var pool = mysql.createPool({
    connectionLimit : dbConfig.connectionLimit,
 });
 
+router.get('/create', function(req, res, next){
+  res.render('inform_edit');
+});
 // 여행계획 조회
 router.get('/', function(req, res, next) {
   pool.getConnection(function(error, connection){
@@ -84,7 +88,7 @@ router.get('/:plan_id', function(req, res, next) {
       async.waterfall([
         // 여행정보 가져오기
         function(callback){
-          var sql = 'select * from plan p, route r where p.id = ? and p.id = r.plan_id;';
+          var sql = 'select p.id as plan_id, p.*, r.* from plan p, route r where p.id = ? and p.id = r.plan_id;';
           var params = [req.params.plan_id];
           connection.query(sql, params, function(error, rows){
             if (error)
@@ -99,18 +103,21 @@ router.get('/:plan_id', function(req, res, next) {
                   description : rows[i].description
                 });
               datas.plan = {
+                id : rows[0].plan_id,
                 now_count : rows[0].now_count,
-                total_count : rows[0].total_count,
                 title : rows[0].title,
                 contents : rows[0].contents,
                 fee : rows[0].fee,
-                start_at : rows[0].start_at,
-                end_at : rows[0].end_at,
+                start_at : moment(rows[0].start_at).format("YYYY-MM-DD"),
+                end_at : moment(rows[0].end_at).format("YYYY-MM-DD"),
                 create_at : rows[0].create_at,
                 image1 : rows[0].image1,
                 image2 : rows[0].image2,
                 image3 : rows[0].image3,
                 image4 : rows[0].image4,
+                sido : rows[0].sido,
+                sigugun : rows[0].sigugun,
+                category : rows[0].category,
                 routes : routes
               };
               callback(null, rows[0].member_id);
@@ -125,6 +132,7 @@ router.get('/:plan_id', function(req, res, next) {
             if (error)
               callback(error, 'select2');
             else{
+              rows[0].gender = (rows[0].gender === 0) ? "남자" : "여자";
               datas.guide = {
                 email : rows[0].email,
                 name : rows[0].name,
@@ -159,7 +167,7 @@ router.get('/:plan_id', function(req, res, next) {
             res.sendStatus(500);
           }
           else {
-            res.send(datas);
+            res.render('inform', {datas : datas});
           }
         }
       );
@@ -186,7 +194,7 @@ router.put('/', function(req, res, next) {
 // 여행계획 등록
 var fields = upload.fields([{ name: 'image1', maxCount: 1 }, { name: 'image2', maxCount: 1 }, { name: 'image3', maxCount: 1 }, { name: 'image4', maxCount: 1 }]);
 router.post('/', fields, function(req, res, next) {
-  console.log(req.body);
+
   pool.getConnection(function(error, connection){
     if (error){
       console.log("getConnection Error" + error);
@@ -199,8 +207,8 @@ router.post('/', fields, function(req, res, next) {
       var image3 = (req.files.image3) ? req.files.image3[0].location : null;
       var image4 = (req.files.image4) ? req.files.image4[0].location : null;
 
-      var sql = 'insert into plan(member_id, category, total_count, title, contents, start_at, end_at, fee, image1, image2, image3, image4, sido, sigugun, create_at) values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,now())';
-      var params = [req.session.user_id, req.body.category, req.body.total_count, req.body.title, req.body.contents, req.body.start_at, req.body.end_at, req.body.fee, image1, image2, image3, image4, req.body.sido, req.body.sigugun];
+      var sql = 'insert into plan(member_id, category, title, contents, start_at, end_at, fee, image1, image2, image3, image4, sido, sigugun, create_at) values(?,?,?,?,?,?,?,?,?,?,?,?,?,now())';
+      var params = [req.session.user_id, req.body.category, req.body.title, req.body.contents, req.body.date.substring(0,10), req.body.date.substring(13,24), req.body.fee, image1, image2, image3, image4, req.body.sido[0], req.body.sigugun[0]];
       connection.query(sql, params,function(error, rows){
         if (error){
           console.log(error);
@@ -211,8 +219,9 @@ router.post('/', fields, function(req, res, next) {
           var plan_id = rows.insertId;
           var sql = 'insert into route(plan_id, longitude, latitude, area, description) values ?';
           var params = [];
-          for (var i in req.body.routes)
-            params.push([plan_id, req.body.routes[i].longitude, req.body.routes[i].latitude, req.body.routes[i].area, req.body.routes[i].description]);
+          for (var i in req.body.longitude){
+            params.push([plan_id, req.body.longitude[i], req.body.latitude[i], req.body.area[i], req.body.description[i]]);
+          }
           connection.query(sql, [params], function(error, rows){
             if (error){
               console.log(error);
@@ -234,7 +243,7 @@ router.post('/', fields, function(req, res, next) {
 
 // 여행계획 신청
 router.post('/:plan_id', function(req, res, next) {
-  console.log(req.session);
+  console.log(req.session, req.params);
   pool.getConnection(function(error, connection){
     if (error){
       console.log("getConnection Error" + error);

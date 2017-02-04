@@ -1,0 +1,120 @@
+<html><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+
+        <!-- animation -->
+        <link rel="stylesheet" href="/stylesheets/animate.css" />
+        <!-- bootstrap -->
+        <link rel="stylesheet" href="/stylesheets/bootstrap.css" />
+        <!-- et line icon -->
+        <link rel="stylesheet" href="/stylesheets/et-line-icons.css" />
+        <!-- font-awesome icon -->
+        <link rel="stylesheet" href="/stylesheets/font-awesome.min.css" />
+        <!-- revolution slider -->
+        <link rel="stylesheet" href="/stylesheets/extralayers.css" />
+        <link rel="stylesheet" href="/stylesheets/settings.css" />
+        <!-- magnific popup -->
+        <link rel="stylesheet" href="/stylesheets/magnific-popup.css" />
+        <!-- owl carousel -->
+        <link rel="stylesheet" href="/stylesheets/owl.carousel.css" />
+        <link rel="stylesheet" href="/stylesheets/owl.transitions.css" />
+        <link rel="stylesheet" href="/stylesheets/full-slider.css" />
+        <!-- text animation -->
+        <link rel="stylesheet" href="/stylesheets/text-effect.css" />
+        <!-- hamburger menu  -->
+        <link rel="stylesheet" href="/stylesheets/menu-hamburger.css" />
+        <!-- common -->
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <!-- responsive -->
+        <link rel="stylesheet" href="/stylesheets/responsive.css" />
+        <!--Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="/stylesheets/sign_in.css">
+  </head><body>
+    <nav class="navbar navbar-fixed-top nav-transparent overlay-nav sticky-nav " role="navigation" style="background-color:rgba( 0, 0, 0, 0.0 )">
+        <div class="container" style="background-color:rgba( 0, 0, 0, 0.0 )">
+            <div class="row" style="padding-top:1%;background-color:rgba( 0, 0, 0, 0.0 )">
+                <!-- logo -->
+                <div class="col-md-2 pull-left" style="background-color:rgba( 0, 0, 0, 0.0 )"><a class="logo-light" href="index.html"><img height="8%" src="/images/tripear_white.png" class="logo" /></a><a class="logo-dark" href="index.html"></a></div>
+                <!-- end logo -->
+                <!-- toggle navigation -->
+                <div class="navbar-header col-sm-8 col-xs-2 pull-right">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                </div>
+                <!-- toggle navigation end -->
+                <!-- main menu -->
+                <div class="col-md-10 no-padding-right accordion-menu text-right">
+                    <div class="navbar-collapse collapse">
+                        <ul id="accordion" class="nav navbar-nav navbar-right panel-group">
+                            <!-- menu item -->
+                            <li>
+                                <a href="" style="color:#FFFFFF;font-size : 18px;">메인</a>
+                            </li>
+                            <li>
+                                <a href="" style="color:#FFFFFF;font-size : 18px;">서비스 소개</a>
+                            </li>
+                            <li>
+                                <a href="" style="color:#FFFFFF;font-size : 18px;">문의하기</a>
+                            </li>
+                            <li>
+                                <a href="" style="color:#FFFFFF;font-size : 18px;">여행지 찾기</a>
+                            </li>
+
+                            <li>
+                                <a href="" style="color:#FFFFFF;font-size : 18px;">언어 선택</a>
+                            </li>
+                            <!-- end menu item -->
+                        </ul>
+                    </div>
+                </div>
+                <!-- end main menu -->
+            </div>
+        </div>
+    </nav>
+
+    <div class="section">
+      <div class="background-image"></div>
+      <div class="container">
+        <div class="row"></div>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <div class="section"></div>
+          </div>
+          <div class="col-md-4 text-center" id="box" style="padding:3%;background-color:rgba( 0, 0, 0, 0.2 );">
+
+            <p>
+              <img src="/images/tripear_1.png" class="center-block img-responsive">
+
+            </p>
+            <form name="f1" method="post" action="/sign/in">
+              <p>
+                <input type="text" name="email" placeholder="Email">
+              </p>
+              <p>
+                <input type="password" name="password" style="margin-bottom:5px;" placeholder="Password">
+              </p>
+            </form>
+            <p class="text-left" style="margin-left:4%">
+              <input type="checkbox" name="loginInfo" value="로그인상태유지">
+              <label for="checkbox2">
+                <span style="color:#333333">로그인 상태 유지</span></label>
+            </p>
+            <p class="text-right" onclick="">
+              <a herf="#" id="findPass" style="color:#333333"> 비밀번호 찾기</a>
+            </p>
+            <p onclick="document.f1.submit();" id="clicklogin" style="font-size:1em; line-height:32px; ">로그인</p>
+            <p onclick="window.location.href='https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=EHpo3R3lnuULINBK0AU9&redirect_uri=http://localhost:3000/oauth/naver/callback&state=RANDOM_STATE'" id="clickNaver" style="font-size:1em; background-color:#00C73C; color:white; line-height:32px; ">
+            <a><img src="/images/naver_logo.png" style="height:100%; float:left; padding-left:5px;"></a>
+            네이버 계정으로 로그인</p>
+            <p id="clickJoin" onclick="window.location.href='/sign/up'">회원가입</p>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+</body></html>
