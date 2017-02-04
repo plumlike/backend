@@ -37,11 +37,8 @@ jspm_packages
 .node_repl_history
 
 
-#Config directories
-config
-
-
+#config file
+config.json
+awsConfig.json
 .DS_Store
-
-
 dump.rdb

@@ -5,7 +5,14 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <form method="post" action="/log/in">
+      <input type="email" name="email" id="email" />
+      <input type="password" name="password" id="password" />
+      <input type="submit" value="로그인" />
+    </form>
+
+    <form method="post" action="/log/out">
+      <input type="submit" value="로그아웃" />
+    </form>
   </body>
 </html>
