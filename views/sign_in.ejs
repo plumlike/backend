@@ -34,11 +34,14 @@
         <!--Custom CSS-->
         <link rel="stylesheet" type="text/css" href="/stylesheets/sign_in.css">
   </head><body>
+
+    <div class="navbar navbar-default navbar-static-top">
+        <img src="/images/start.png" width="100%">
+    </div>
     <nav class="navbar navbar-fixed-top nav-transparent overlay-nav sticky-nav " role="navigation" style="background-color:rgba( 0, 0, 0, 0.0 )">
         <div class="container" style="background-color:rgba( 0, 0, 0, 0.0 )">
             <div class="row" style="padding-top:1%;background-color:rgba( 0, 0, 0, 0.0 )">
                 <!-- logo -->
-                <div class="col-md-2 pull-left" style="background-color:rgba( 0, 0, 0, 0.0 )"><a class="logo-light" href="index.html"><img height="8%" src="/images/tripear_white.png" class="logo" /></a><a class="logo-dark" href="index.html"></a></div>
                 <!-- end logo -->
                 <!-- toggle navigation -->
                 <div class="navbar-header col-sm-8 col-xs-2 pull-right">
@@ -48,26 +51,6 @@
                 <!-- main menu -->
                 <div class="col-md-10 no-padding-right accordion-menu text-right">
                     <div class="navbar-collapse collapse">
-                        <ul id="accordion" class="nav navbar-nav navbar-right panel-group">
-                            <!-- menu item -->
-                            <li>
-                                <a href="" style="color:#FFFFFF;font-size : 18px;">메인</a>
-                            </li>
-                            <li>
-                                <a href="" style="color:#FFFFFF;font-size : 18px;">서비스 소개</a>
-                            </li>
-                            <li>
-                                <a href="" style="color:#FFFFFF;font-size : 18px;">문의하기</a>
-                            </li>
-                            <li>
-                                <a href="" style="color:#FFFFFF;font-size : 18px;">여행지 찾기</a>
-                            </li>
-
-                            <li>
-                                <a href="" style="color:#FFFFFF;font-size : 18px;">언어 선택</a>
-                            </li>
-                            <!-- end menu item -->
-                        </ul>
                     </div>
                 </div>
                 <!-- end main menu -->
@@ -106,7 +89,7 @@
               <a herf="#" id="findPass" style="color:#333333"> 비밀번호 찾기</a>
             </p>
             <p onclick="document.f1.submit();" id="clicklogin" style="font-size:1em; line-height:32px; ">로그인</p>
-            <p onclick="window.location.href='https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=EHpo3R3lnuULINBK0AU9&redirect_uri=http://localhost:3000/oauth/naver/callback&state=RANDOM_STATE'" id="clickNaver" style="font-size:1em; background-color:#00C73C; color:white; line-height:32px; ">
+            <p onclick="window.location.href='https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=EHpo3R3lnuULINBK0AU9&redirect_uri=http://52.79.190.253:3000/oauth/naver/callback&state=RANDOM_STATE'" id="clickNaver" style="font-size:1em; background-color:#00C73C; color:white; line-height:32px; ">
             <a><img src="/images/naver_logo.png" style="height:100%; float:left; padding-left:5px;"></a>
             네이버 계정으로 로그인</p>
             <p id="clickJoin" onclick="window.location.href='/sign/up'">회원가입</p>
@@ -116,5 +99,9 @@
       </div>
     </div>
 
+                <footer style="margin-top:200px;">
+                    <img src="/images/end.png" width="100%">
+
+                </footer>
 
 </body></html>

@@ -19,7 +19,7 @@ var pool = mysql.createPool({
 var client_id = 'EHpo3R3lnuULINBK0AU9';
 var client_secret = 'Ptpkeh3HNW';
 var state = "RANDOM_STATE";
-var redirectURI = encodeURI("http://localhost:3000/oauth/naver/callback");
+var redirectURI = encodeURI("http://52.79.190.253:3000/oauth/naver/callback");
 var api_url = "";
 // 네이버 로그인
 router.get('/naver', function(req, res) {

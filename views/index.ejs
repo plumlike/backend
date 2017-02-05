@@ -1,18 +1,306 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <form method="post" action="/sign/in">
-      <input type="email" name="email" id="email" />
-      <input type="password" name="password" id="password" />
-      <input type="submit" value="로그인" />
-    </form>
+<html><head>
+    <style>
+      @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+        divp[class="background-image"]{
+        width:100%;
+        height:100%;
+      }
+      div[class="background-image"]{
+      width:100%;}
 
-    <form method="post" action="/sign/out">
-      <input type="submit" value="로그아웃" />
-    </form>
-  </body>
-</html>
+      #headimg{
+        position:absolute;
+        top:10px;
+        left:50px;;
+      margin-right:50em;}
+
+      div[class="head"]{
+        font-family: 'Nanum Gothic', sans-serif;
+        font-size:17px;
+      	color:white;
+        padding-right:50px;
+      	margin-top:0px;
+      	padding-top : 0px;
+      }
+
+      a[class="heads"]{
+      color:white;
+      }
+
+      #space{
+        margin-top:6em;
+      	 padding:0px;
+      }
+       #logo{
+        color:black;
+        font-weight:700;
+        background-color:#00C6B7;
+      }
+      #comment{
+        color:white;
+        text-align:right;
+         font-family: 'Nanum Gothic', sans-serif;
+         font-size:1.5em;
+        padding-right:0px;
+        margin-right:3em;
+        margin-top:23em;
+        vertical-align:bottom;
+      }
+
+      p[class="title"]{
+          color:#5D5D5D;
+          font-family: 'Nanum Gothic', sans-serif;
+          font-weight:800;
+          font-size:25px;
+          text-align : center;
+      }
+      span{
+         font-weight:700;
+        }
+    #findTrip{
+      font-family: 'Nanum Gothic', sans-serif;
+      font-size:20px;
+      font-weight:700;
+      margin-top:25px;
+      padding-right:0px;
+      margin-right:0px;
+      margin-left:20px;
+      color:#5D5D5D;
+    }
+          select[class="selection"]{
+            border-color:white;
+             box-shadow: 1px 1px 1px #5D5D5D ;
+            font-family: 'Nanum Gothic', sans-serif;
+            margin-top:20px;
+              height:5%;
+              width:80%;
+            -webkit-border-radius:5px;
+          }
+        input[type="text"]{
+          border-color:white;
+          padding : 5px;
+          margin-top:20px;
+          font-family: 'Nanum Gothic', sans-serif;
+          width:85%;
+          height:5%;
+          color:#5D5D5D;
+         box-shadow: 1px 1px 1px #5D5D5D ;
+        -webkit-border-radius:5px;
+          }
+        #searchIcon{
+          margin-left:0px;
+          padding:0px;
+        }
+         p[class="trip1"]{
+              color:#5D5D5D;
+              font-family: 'Nanum Gothic', sans-serif;
+              font-size : 16px;
+              padding : 10px;
+              color:white;
+              background-color :#00C6B7;
+          }
+          p[class="trip2"]{
+            color:#5D5D5D;
+              font-family: 'Nanum Gothic', sans-serif;
+              font-size : 16px;
+              padding : 10px;
+              color:white;
+              background-color :#009DC1;
+          }
+          div[class="col-md-1"]{
+            text-align:center;
+            margin:10px;
+          }
+      img[class="guide"]{
+        margin:0px;
+        padding:0px;
+      width:100%;}
+    </style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+  </head><body>
+    <!--Header-->
+    <div class="section">
+      <div class="background-image" style="background-image : url('/images/home_1.jpg');background-size:100%;"></div>
+      <div class="section text-right">
+        <div class="head">
+          <span id="headimg">
+            <img src="/images/tripear_흰색.png">
+          </span>
+          <a herf="#" class="heads"> 메인 </a> 
+          <a herf="#" class="heads"> 서비스 소개 </a> 
+          <a herf="#" class="heads"> 문의하기 </a> 
+          <a herf="#" class="heads"> 여행자 찾기 </a> 
+          <a herf="#" class="heads"> 언어선택 </a> </div>
+      </div>
+      <div class="section">
+        <div class="container" id="comment">
+          <p>특별한 여행을 위해 가이드를 매칭해드립니다.</p>
+          <p>여행계획 공유 플랫폼
+            <span id="logo">Tripear</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="section">
+        <div class="container">
+          <div class="row text-left">
+            <div class="col-md-2 text-right" id="findTrip">여행지찾기</div>
+            <div class="col-md-1">
+              <hr style="height:50px; width:10px; border:5px;background-color: #5D5D5D;margin-left:50px; margin-top:5px;top:0; padding:0px;">
+            </div>
+            <div class="col-md-2 text-right">
+              <select class="selection" name="시">
+                <option value="">시</option>
+                <option value="경기도">경기도</option>
+                <option value="강원도">강원도</option>
+                <option value="경상남도">경상남도</option>
+                <option value="경상북도">경상북도</option>
+                <option value="서울시">서울시</option>
+                <option value="전라남도">전라남도</option>
+                <option value="전라북도">전라북도</option>
+                <option value="충청남도">충청남도</option>
+                <option value="충청북도">충청북도</option>
+              </select>
+            </div>
+            <div class="col-md-2 text-left">
+              <select class="selection" name="카테고리">
+                <option value="">카테고리</option>
+                <option value="경기도">경기도</option>
+                <option value="강원도">강원도</option>
+                <option value="경상남도">경상남도</option>
+                <option value="경상북도">경상북도</option>
+                <option value="서울특별시">서울특별시</option>
+                <option value="전라남도">전라남도</option>
+                <option value="전라북도">전라북도</option>
+                <option value="충청남도">충청남도</option>
+                <option value="충청북도">충청북도</option>
+              </select>
+            </div>
+            <div class="col-md-3 text-left" id="searchIcon">
+              <input type="text" value="검색" name="search">
+              <i class="fa fa-2x fa-fw fa-search text-muted"></i>
+            </div>
+            <div class="col-md-2">
+              <!--검색아이콘-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <hr style="height:10px; width:100px; border:5px;background-color: #00C6B7">
+            <p class="title">인기 여행 계획</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <a><img src="/images/chart_image8.jpg" class="img-responsive"></a>
+            <p class="trip1">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image7.jpg" class="img-responsive"></a>
+            <p class="trip1">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image6.jpg" class="img-responsive"></a>
+            <p class="trip1">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image5.jpg" class="img-responsive"></a>
+            <p class="trip1">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12" style="margin-top:40px;">
+            <hr style="height:10px; width:100px; border:5px;background-color:#009DC1;">
+            <p class="title">최신 여행 계획</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <a><img src="/images/chart_image1.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image2.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image3.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image4.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <a><img src="/images/chart_image1.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image2.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image3.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+          <div class="col-md-3">
+            <a><img src="/images/chart_image4.jpg" class="img-responsive"></a>
+            <p class="trip2">
+              <span>여행지소개(제목)</span>
+              <br>비용</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="title">이용방법안내</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <img src="/images/about.jpg" class="guide">
+    </div>
+</body></html>
